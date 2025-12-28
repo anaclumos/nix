@@ -112,6 +112,7 @@ let
     obsidian
     logseq
     sticky-notes
+    # heptabase
 
     # Media
     spotify
