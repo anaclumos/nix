@@ -31,7 +31,7 @@ let
     argocd
     k9s
     kubectl
-    azure-cli
+    (azure-cli.withExtensions [ azure-cli.extensions.bastion ])
     azure-storage-azcopy
     cloudflared
 
