@@ -2,16 +2,16 @@
   <br>
   <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-colours.svg" alt="NixOS" width="100">
   <br>
-  NixOS Configuration
+  Sunghyun's NixOS
   <br>
 </h1>
 
 <p align="center">
-  <strong>Declarative system configuration for Framework Laptop 13 AI Edition</strong>
+  <strong>Declarative system configuration for Framework Laptop 13</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/NixOS-25.11-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS">
+  <img src="https://img.shields.io/badge/NixOS-25.11_Xantusia-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS">
   <img src="https://img.shields.io/badge/Flakes-Enabled-44cc11?style=for-the-badge" alt="Flakes">
   <img src="https://img.shields.io/badge/Home_Manager-Integrated-blue?style=for-the-badge" alt="Home Manager">
 </p>
@@ -29,12 +29,12 @@
 
 | Component | Specification |
 |-----------|---------------|
-| **Laptop** | Framework Laptop 13 AI Edition |
+| **Laptop** | [Framework Laptop 13 (AMD Ryzen AI 300 Series)](https://frame.work/products/laptop13-diy-amd-ai300) |
 | **CPU** | AMD Ryzen AI 9 HX 370 w/ Radeon 890M |
 | **RAM** | 96GB DDR5 5600MHz |
 | **Storage** | 4TB WD SN850X NVMe |
 | **Display** | 2880×1920 @ 120Hz (3:2) |
-| **Kernel** | Linux 6.18 (latest) |
+| **Kernel** | Linux 6.18 LTS |
 
 ## Installation
 
@@ -66,9 +66,9 @@ Bootstraps a fresh NixOS installation into a fully configured system. Includes h
 
 ### Desktop
 
-- **GNOME 49** on Wayland with curated extensions
-- **Dynamic wallpaper** — Solar gradient synced to Seoul time via Timewall
-- **Pretendard GOV** — Korean government typeface with 20+ font aliases
+- **[GNOME 49 "Brescia"](https://release.gnome.org/49/)** on Wayland with curated extensions
+- **Dynamic wallpaper** — Solar gradient synced to Seoul time via [Timewall](https://github.com/bcyran/timewall)
+- **[Pretendard GOV](https://github.com/orioncactus/pretendard)** — Korea's pan-government design system typeface with 20+ font aliases
 - **Dash to Dock** — Auto-hiding dock with intellihide
 - **Unite** — Clean panel without window decorations
 - **Blur My Shell** — Gaussian blur effects
