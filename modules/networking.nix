@@ -17,10 +17,5 @@ _: {
       enable = true;
       useRoutingFeatures = "client";
     };
-
-    adguardhome = {
-      enable = true;
-      mutableSettings = true;
-    };
   };
 }

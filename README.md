@@ -76,7 +76,6 @@ Bootstraps a fresh NixOS installation into a fully configured system. Includes h
 ### Networking
 
 - **Tailscale** — Mesh VPN with Taildrop file sharing
-- **AdGuard Home** — Local DNS filtering
 - **ExpressVPN** — Commercial VPN integration
 - **systemd-resolved** — DNSSEC with fallback DNS (1.1.1.1, 8.8.8.8)
 
@@ -140,7 +139,7 @@ No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `Deac
 │   ├── power.nix             # Zram, hibernation, IO schedulers
 │   ├── security.nix          # Firewall, kernel hardening
 │   ├── core.nix              # keyd, Docker, 1Password
-│   ├── networking.nix        # Tailscale, AdGuard, VPN
+│   ├── networking.nix        # Tailscale, VPN
 │   ├── gnome.nix             # Desktop environment
 │   ├── input-method.nix      # fcitx5 + Hangul
 │   ├── nix-settings.nix      # Caches, GC, nix-ld
