@@ -20,10 +20,6 @@
       url = "github:anaclumos/tableplus.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    unms-research = {
-      url = "github:anaclumos/unms-research.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =

@@ -32,7 +32,6 @@ let
     comma
     nix-index
     mariadb
-    inputs.unms-research.packages.${pkgs.stdenv.hostPlatform.system}.default
     scc
     whois
     unzip

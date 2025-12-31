@@ -186,7 +186,6 @@ This configuration uses personal flakes for packages not in nixpkgs:
 
 - [`anaclumos/kakaotalk.nix`](https://github.com/anaclumos/kakaotalk.nix) — Korean messenger
 - [`anaclumos/tableplus.nix`](https://github.com/anaclumos/tableplus.nix) — Database GUI
-- [`anaclumos/unms-research.nix`](https://github.com/anaclumos/unms-research.nix) — Research tools
 
 ## License
 
