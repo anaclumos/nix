@@ -1,133 +1,193 @@
-# Sunghyun's NixOS
+<h1 align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nix-snowflake-colours.svg" alt="NixOS" width="100">
+  <br>
+  NixOS Configuration
+  <br>
+</h1>
 
+<p align="center">
+  <strong>Declarative system configuration for Framework Laptop 13 AI Edition</strong>
+</p>
 
-![Framework](https://img.shields.io/badge/Framework-Laptop_13-000000?style=flat&logo=framework&logoColor=white)
-![AMD](https://img.shields.io/badge/AMD-Ryzen_AI_9_HX_370_w\/_Radeon_890M-ED1C24?style=flat&logo=amd&logoColor=white)
-![Display](https://img.shields.io/badge/Display-2880x1920_@_120Hz-000000?style=flat)
-![RAM](https://img.shields.io/badge/RAM-Crucial_96GB_DDR5_5600MHz-000000?style=flat)
-![Storage](https://img.shields.io/badge/Storage-4TB_SN850X-000000?style=flat)
+<p align="center">
+  <img src="https://img.shields.io/badge/NixOS-25.11-5277C3?style=for-the-badge&logo=nixos&logoColor=white" alt="NixOS">
+  <img src="https://img.shields.io/badge/Flakes-Enabled-44cc11?style=for-the-badge" alt="Flakes">
+  <img src="https://img.shields.io/badge/Home_Manager-Integrated-blue?style=for-the-badge" alt="Home Manager">
+</p>
 
-![NixOS](https://img.shields.io/badge/NixOS-25.11-5277C3?style=flat&logo=nixos&logoColor=white)
-![GNOME](https://img.shields.io/badge/GNOME-49.2-4A86CF?style=flat&logo=gnome&logoColor=white)
-![Wayland](https://img.shields.io/badge/Wayland-Mutter-FFBC00?style=flat&logo=wayland&logoColor=white)
-![Kernel](https://img.shields.io/badge/Kernel-6.18.0-FCC624?style=flat&logo=linux&logoColor=black)
+<p align="center">
+  <a href="#installation">Installation</a> •
+  <a href="#features">Features</a> •
+  <a href="#keyboard">Keyboard</a> •
+  <a href="#architecture">Architecture</a>
+</p>
 
+---
 
-## Quick Install
+## Hardware
 
-```sh
-nix-shell -p curl --run 'curl -fsSL https://raw.githubusercontent.com/anaclumos/nix/main/bootstrap.sh | sh'
-```
+| Component | Specification |
+|-----------|---------------|
+| **Laptop** | Framework Laptop 13 AI Edition |
+| **CPU** | AMD Ryzen AI 9 HX 370 w/ Radeon 890M |
+| **RAM** | 96GB DDR5 5600MHz |
+| **Storage** | 4TB WD SN850X NVMe |
+| **Display** | 2880×1920 @ 120Hz (3:2) |
+| **Kernel** | Linux 6.18 (latest) |
 
-## Hyper Key
-
-Caps Lock becomes a **Hyper key** (Ctrl+Alt+Shift+Super). Tapping it alone triggers `Alt+F10` (maximize window). Holding it enables app-switching chords:
-
-| Chord | Action |
-|-------|--------|
-| Hyper + J | Focus Chrome (Super+2) |
-| Hyper + K | Focus app slot 4 |
-| Hyper + L | Focus app slot 5 |
-| Hyper + H | Focus app slot 3 |
-| Hyper + F | Focus Nautilus (Super+1) |
-| Hyper + Enter | Move window to end + top |
-
-## Kana-Style Language Switching
-
-Inspired by Japanese Kana input on macOS:
-
-- **Left Control (tap)** → Switch to English
-- **Right Control (tap)** → Switch to Korean (Hangul)
-
-No toggle key. Each hand has a dedicated language. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `DeactivateKeys=Control+Control_L`.
-
-## Mac-Like Shortcuts
-
-Keyd remaps physical keys to feel like macOS:
-
-| Physical Key | Behavior |
-|--------------|----------|
-| Left Alt | Command (Ctrl) — copy, paste, cut, tab switching |
-| Left/Right Super | Option (Alt) — word navigation, word delete |
-| Left/Right Control | Control — browser tab navigation |
-| Command + [ / ] | Back / Forward (Alt+Left/Right) |
-| Command + Left/Right | Home / End |
-| Command + Up/Down | Page Up / Page Down |
-| Option + Left/Right | Word jump (Ctrl+Left/Right) |
-| Option + Backspace | Delete word (Ctrl+Backspace) |
-
-## Airdrop
+## Installation
 
 ```sh
-airdrop  # sends all PNGs in ~/Screenshots to iPhone via Taildrop, then deletes them
+curl -fsSL https://raw.githubusercontent.com/anaclumos/nix/main/bootstrap.sh | sh
 ```
 
-## Other Shortcuts
-
-| Shortcut | Action |
-|----------|--------|
-| Ctrl + Space | GNOME Overview (Spotlight-like) |
-| Ctrl + Shift + Space | 1Password Quick Access |
-| Ctrl + L | Lock screen |
-| Ctrl + G | Clipboard history |
+Bootstraps a fresh NixOS installation into a fully configured system. Includes hardware detection, firmware updates, and automatic reboot.
 
 ## Features
 
-### Performance Optimizations
+### Security
 
-- **Zram swap** with zstd compression (50% of RAM)
-- **IO schedulers** tuned for NVMe (none) and SATA SSDs (mq-deadline)
-- **VM tuning** optimized for zram (swappiness=180)
-- **tmpfs /tmp** for faster temporary file operations
-- **Plymouth** for graphical boot with quiet splash
+- **Full disk encryption** — LUKS on root and swap partitions
+- **Kernel hardening** — `kptr_restrict`, `dmesg_restrict`, `kexec_load_disabled`
+- **Network hardening** — SYN cookies, reverse path filtering, no ICMP redirects
+- **SSH via 1Password** — Keys stored in 1Password, never on disk
+- **Fingerprint auth** — sudo and login via fprintd
+- **Core dumps disabled** — No sensitive memory written to disk
 
-### Security Hardening
+### Performance
 
-- **Firewall** enabled with Tailscale trusted interface
-- **Kernel hardening**: kptr_restrict, dmesg_restrict, kexec disabled
-- **Network hardening**: rp_filter, tcp_syncookies, no ICMP redirects
-- **Sudo**: wheel-only, fingerprint auth enabled
-- **Boot**: editor disabled, core dumps disabled
+- **Zram** — 48GB compressed swap (zstd, 50% of RAM)
+- **VM tuning** — `swappiness=180`, optimized for zram workloads
+- **IO schedulers** — `none` for NVMe, `mq-deadline` for SATA
+- **Systemd initrd** — Faster boot with parallel service startup
+- **tmpfs /tmp** — RAM-backed temp directory (50% allocation)
+- **AMD P-State** — Active mode for dynamic CPU scaling
 
-### Nix Configuration
+### Desktop
 
-- **Binary caches**: nixos.org + nix-community cachix
-- **Auto garbage collection**: weekly, 30-day retention
-- **Auto store optimization**: weekly
-- **nix-ld**: pre-configured for common libraries
+- **GNOME 49** on Wayland with curated extensions
+- **Dynamic wallpaper** — Solar gradient synced to Seoul time via Timewall
+- **Pretendard GOV** — Korean government typeface with 20+ font aliases
+- **Dash to Dock** — Auto-hiding dock with intellihide
+- **Unite** — Clean panel without window decorations
+- **Blur My Shell** — Gaussian blur effects
 
 ### Networking
 
-- **systemd-resolved** with DNSSEC and fallback DNS (1.1.1.1, 8.8.8.8)
-- **Tailscale** with client routing features
-- **AdGuard Home** for local DNS filtering
-- **WiFi powersave** enabled
+- **Tailscale** — Mesh VPN with Taildrop file sharing
+- **AdGuard Home** — Local DNS filtering
+- **ExpressVPN** — Commercial VPN integration
+- **systemd-resolved** — DNSSEC with fallback DNS (1.1.1.1, 8.8.8.8)
 
-## Development
+## Keyboard
 
-Enter the development shell with nix tooling:
+This configuration recreates macOS keyboard behavior on Linux using [keyd](https://github.com/rvaiya/keyd).
 
-```sh
-nix develop
+### Modifier Remapping
+
+| Physical Key | Behavior |
+|--------------|----------|
+| Left Alt | Command (Ctrl) — copy, paste, cut, tabs |
+| Left/Right Super | Option (Alt) — word navigation, word delete |
+| Left/Right Ctrl | Control — browser tab navigation |
+| Caps Lock | Hyper (Ctrl+Alt+Shift+Super) |
+
+### macOS Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| Cmd + C/V/X | Copy / Paste / Cut |
+| Cmd + [ / ] | Back / Forward |
+| Cmd + Left/Right | Home / End |
+| Cmd + Up/Down | Page Up / Page Down |
+| Option + Left/Right | Word jump |
+| Option + Backspace | Delete word |
+
+### Hyper Key Chords
+
+Caps Lock acts as a Hyper key. Tap alone to maximize window (Alt+F10). Hold for app switching:
+
+| Chord | Target |
+|-------|--------|
+| Hyper + F | Nautilus (Super+1) |
+| Hyper + J | Chrome (Super+2) |
+| Hyper + H/K/L | App slots 3/4/5 |
+| Hyper + Enter | Move window to end + top |
+
+### Kana-Style Input
+
+Inspired by Japanese keyboard input on macOS. Each hand has a dedicated language:
+
+| Key | Action |
+|-----|--------|
+| Left Ctrl (tap) | Switch to English |
+| Right Ctrl (tap) | Switch to Korean |
+
+No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `DeactivateKeys=Control+Control_L`.
+
+## Architecture
+
 ```
-
-Available tools:
-- `nixfmt` - Format nix files (RFC style)
-- `statix` - Lint nix files
-- `deadnix` - Find dead code
-- `nil` - Nix LSP
-- `nix-tree` - Explore dependencies
-- `nvd` - Compare generations
-- `nix-diff` - Diff derivations
+.
+├── flake.nix                 # Flake definition with inputs
+├── configuration.nix         # Module composition
+├── hardware-configuration.nix
+├── packages.nix              # Package sets by category
+├── modules/
+│   ├── options.nix           # Custom module options
+│   ├── boot.nix              # Kernel, Plymouth, LUKS
+│   ├── power.nix             # Zram, hibernation, IO schedulers
+│   ├── security.nix          # Firewall, kernel hardening
+│   ├── core.nix              # keyd, Docker, 1Password
+│   ├── networking.nix        # Tailscale, AdGuard, VPN
+│   ├── gnome.nix             # Desktop environment
+│   ├── input-method.nix      # fcitx5 + Hangul
+│   ├── nix-settings.nix      # Caches, GC, nix-ld
+│   ├── gaming.nix            # Steam, Gamemode
+│   └── media.nix             # PipeWire, GPU drivers
+├── home/
+│   ├── default.nix           # Home Manager entry
+│   ├── shell.nix             # Zsh, Atuin, aliases
+│   ├── git.nix               # Git + SSH signing
+│   ├── gnome-settings.nix    # dconf settings
+│   ├── fcitx.nix             # Input method config
+│   ├── services.nix          # Timewall, Thunderbird
+│   └── autostart.nix         # 1Password, Trayscale
+├── fonts/
+│   └── default.nix           # Pretendard, Iosevka, font aliases
+└── wallpaper/
+    └── solar-gradient.heic   # Dynamic wallpaper
+```
 
 ## Shell Aliases
 
 | Alias | Description |
 |-------|-------------|
-| `build` | Format, update flake, rebuild system, garbage collect |
-| `nixgit` | Commit and push nix config with date |
+| `build` | Format, update flake, rebuild, garbage collect |
+| `nixgit` | Commit and push with date message |
 | `ngc` | Garbage collect (keep 100 generations) |
-| `ec` / `ed` | ExpressVPN connect / disconnect |
 | `zz` | Open nix config in VS Code |
-| `chat` | Codex with high reasoning |
 | `airdrop` | Send screenshots to iPhone via Taildrop |
+| `chat` | Codex with high reasoning |
+| `ec` / `ed` | ExpressVPN connect / disconnect |
+
+## Development
+
+```sh
+nix develop
+```
+
+Provides: `nixfmt` (RFC style), `statix`, `deadnix`, `nil`, `nix-tree`, `nvd`, `nix-diff`
+
+## Custom Packages
+
+This configuration uses personal flakes for packages not in nixpkgs:
+
+- [`anaclumos/kakaotalk.nix`](https://github.com/anaclumos/kakaotalk.nix) — Korean messenger
+- [`anaclumos/tableplus.nix`](https://github.com/anaclumos/tableplus.nix) — Database GUI
+- [`anaclumos/unms-research.nix`](https://github.com/anaclumos/unms-research.nix) — Research tools
+
+## License
+
+MIT
