@@ -67,6 +67,7 @@ let
     winetricks
     vulkan-tools
     dxvk
+    chiaki-ng
   ];
   applications = with pkgs; [
     slack
