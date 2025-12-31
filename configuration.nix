@@ -12,6 +12,7 @@
     ./modules/gaming.nix
     ./modules/media.nix
     ./modules/networking.nix
+    ./modules/security.nix
   ];
   modules.user.name = username;
   modules.system.hostname = "framework";

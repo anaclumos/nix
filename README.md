@@ -6,7 +6,7 @@
 ![RAM](https://img.shields.io/badge/RAM-Crucial_96GB_DDR5_5600MHz-000000?style=flat)
 ![Storage](https://img.shields.io/badge/Storage-4TB_SN850X-000000?style=flat)
 
-![AMD](https://img.shields.io/badge/AMD-Ryzen_AI_9_HX_370-ED1C24?style=flat&logo=amd&logoColor=white)
+![AMD](https://img.shields.io/badge/Ryzen_AI_9_HX_370-ED1C24?style=flat&logo=amd&logoColor=white)
 ![Radeon](https://img.shields.io/badge/Radeon-890M-ED1C24?style=flat&logo=amd&logoColor=white)
 
 ![NixOS](https://img.shields.io/badge/NixOS-25.11-5277C3?style=flat&logo=nixos&logoColor=white)
@@ -72,3 +72,64 @@ airdrop  # sends all PNGs in ~/Screenshots to iPhone via Taildrop, then deletes 
 | Ctrl + Shift + Space | 1Password Quick Access |
 | Ctrl + L | Lock screen |
 | Ctrl + G | Clipboard history |
+
+## Features
+
+### Performance Optimizations
+
+- **Zram swap** with zstd compression (50% of RAM)
+- **IO schedulers** tuned for NVMe (none) and SATA SSDs (mq-deadline)
+- **VM tuning** optimized for zram (swappiness=180)
+- **tmpfs /tmp** for faster temporary file operations
+- **Plymouth** for graphical boot with quiet splash
+
+### Security Hardening
+
+- **Firewall** enabled with Tailscale trusted interface
+- **Kernel hardening**: kptr_restrict, dmesg_restrict, kexec disabled
+- **Network hardening**: rp_filter, tcp_syncookies, no ICMP redirects
+- **Sudo**: wheel-only, fingerprint auth enabled
+- **Boot**: editor disabled, core dumps disabled
+
+### Nix Configuration
+
+- **Binary caches**: nixos.org + nix-community cachix
+- **Auto garbage collection**: weekly, 30-day retention
+- **Auto store optimization**: weekly
+- **nix-ld**: pre-configured for common libraries
+
+### Networking
+
+- **systemd-resolved** with DNSSEC and fallback DNS (1.1.1.1, 8.8.8.8)
+- **Tailscale** with client routing features
+- **AdGuard Home** for local DNS filtering
+- **WiFi powersave** enabled
+
+## Development
+
+Enter the development shell with nix tooling:
+
+```sh
+nix develop
+```
+
+Available tools:
+- `nixfmt` - Format nix files (RFC style)
+- `statix` - Lint nix files
+- `deadnix` - Find dead code
+- `nil` - Nix LSP
+- `nix-tree` - Explore dependencies
+- `nvd` - Compare generations
+- `nix-diff` - Diff derivations
+
+## Shell Aliases
+
+| Alias | Description |
+|-------|-------------|
+| `build` | Format, update flake, rebuild system, garbage collect |
+| `nixgit` | Commit and push nix config with date |
+| `ngc` | Garbage collect (keep 100 generations) |
+| `ec` / `ed` | ExpressVPN connect / disconnect |
+| `zz` | Open nix config in VS Code |
+| `chat` | Codex with high reasoning |
+| `airdrop` | Send screenshots to iPhone via Taildrop |

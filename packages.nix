@@ -6,7 +6,7 @@ let
     uv
     ruff
     pnpm
-    vercel
+    nodePackages.vercel
     cmake
     gcc
     gnumake
