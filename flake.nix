@@ -9,8 +9,10 @@
     };
     kakaotalk.url = "github:anaclumos/kakaotalk.nix";
     tableplus.url = "github:anaclumos/tableplus.nix";
+    unms-research.url = "github:anaclumos/unms-research.nix";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
     let
       system = "x86_64-linux";
       username = "sunghyun";
@@ -29,11 +31,12 @@
           specialArgs = { inherit inputs username; };
           modules = [
             { nixpkgs.config.allowUnfree = true; }
+            nixos-hardware.nixosModules.framework-amd-ai-300-series
             ./configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./home.nix;
+              home-manager.users.${username} = import ./home;
               home-manager.extraSpecialArgs = {
                 inherit inputs username pkgs-unstable;
               };
@@ -43,7 +46,6 @@
           ];
         };
       };
-
       formatter.${system} = pkgs.nixfmt-classic;
     };
 }

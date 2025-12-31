@@ -54,15 +54,34 @@ in {
         description = "Additional groups for the user";
       };
     };
+    packages = {
+      enableDevelopment = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable development tools";
+      };
+      enableGaming = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable gaming packages";
+      };
+      enableMedia = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable media tools";
+      };
+      enableCloud = mkOption {
+        type = types.bool;
+        default = true;
+        description = "Enable cloud tools (Azure, GCP, etc.)";
+      };
+    };
   };
-
   config = {
     networking.hostName = sysCfg.hostname;
     time.timeZone = sysCfg.timezone;
     i18n.defaultLocale = sysCfg.locale;
-
     services.fprintd.enable = sysCfg.enableFingerprint;
-
     hardware.bluetooth = mkIf sysCfg.enableBluetooth {
       enable = true;
       powerOnBoot = true;
@@ -74,7 +93,6 @@ in {
         };
       };
     };
-
     users.users.${userCfg.name} = {
       isNormalUser = true;
       description = userCfg.fullName;

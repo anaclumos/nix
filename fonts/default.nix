@@ -22,7 +22,6 @@ let
     "MalgunGothic"
     "돋움"
   ];
-
   generateFontAlias = font: ''
     <match target="pattern">
       <test qual="any" name="family">
@@ -33,7 +32,6 @@ let
       </edit>
     </match>
   '';
-
 in {
   fonts.packages = with pkgs; [
     pretendard-gov
@@ -42,7 +40,6 @@ in {
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
   ];
-
   fonts.fontDir.enable = true;
   fonts.fontconfig = {
     defaultFonts = {
@@ -54,7 +51,6 @@ in {
       <?xml version="1.0"?>
       <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
       <fontconfig>
-        <!-- Replace various fonts with Pretendard GOV -->
         ${lib.concatMapStrings generateFontAlias fontAliases}
       </fontconfig>
     '';

@@ -15,14 +15,11 @@ let
   };
 in {
   programs.zsh.enable = true;
-
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
   };
-
   environment.sessionVariables = lunitSessionVariables;
-
   services.keyd = {
     enable = true;
     keyboards = {
@@ -77,13 +74,11 @@ in {
       };
     };
   };
-
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
     polkitPolicyOwners = [ user ];
   };
-
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
@@ -96,7 +91,6 @@ in {
       mode = "0755";
     };
   };
-
   environment.variables = {
     OP_SERVICE_ACCOUNT_TOKEN = "/etc/1password/service-account-token";
     SSH_AUTH_SOCK = onePassAgent;

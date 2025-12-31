@@ -1,10 +1,8 @@
 { lib, pkgs, ... }: {
   programs.dconf.enable = true;
-
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
-
   environment.gnome.excludePackages = with pkgs; [
     epiphany
     gedit
@@ -21,7 +19,6 @@
     geary
     gnome-text-editor
   ];
-
   programs.dconf.profiles.user.databases = [{
     settings = {
       "org/gnome/desktop/session" = { idle-delay = lib.gvariant.mkUint32 0; };
