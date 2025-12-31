@@ -33,26 +33,30 @@ let
     </match>
   '';
 in {
-  fonts.packages = with pkgs; [
-    pretendard-gov
-    monaspace
-    iosevka
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-  ];
-  fonts.fontDir.enable = true;
-  fonts.fontconfig = {
-    defaultFonts = {
-      sansSerif = [ "Pretendard GOV" "Noto Sans CJK KR" ];
-      serif = [ "Pretendard GOV" "Noto Serif CJK KR" ];
-      monospace = [ "Iosevka" "Monaspace" ];
+  fonts = {
+    packages = with pkgs; [
+      pretendard-gov
+      monaspace
+      iosevka
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        sansSerif = [ "Pretendard GOV" "Noto Sans CJK KR" ];
+        serif = [ "Pretendard GOV" "Noto Serif CJK KR" ];
+        monospace = [ "Iosevka" "Monaspace" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+      localConf = ''
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+        <fontconfig>
+          ${lib.concatMapStrings generateFontAlias fontAliases}
+        </fontconfig>
+      '';
     };
-    localConf = ''
-      <?xml version="1.0"?>
-      <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-      <fontconfig>
-        ${lib.concatMapStrings generateFontAlias fontAliases}
-      </fontconfig>
-    '';
   };
 }

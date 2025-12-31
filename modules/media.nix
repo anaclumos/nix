@@ -1,13 +1,17 @@
-{ ... }: {
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+_: {
+  services = {
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    xserver.videoDrivers = [ "amdgpu" ];
   };
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  security.rtkit.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 }

@@ -96,8 +96,7 @@ in {
     users.users.${userCfg.name} = {
       isNormalUser = true;
       description = userCfg.fullName;
-      extraGroups = userCfg.extraGroups;
-      shell = userCfg.shell;
+      inherit (userCfg) extraGroups shell;
     };
   };
 }

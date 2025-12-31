@@ -14,10 +14,14 @@
     ./modules/networking.nix
     ./modules/security.nix
   ];
-  modules.user.name = username;
-  modules.system.hostname = "framework";
-  modules.system.timezone = "Asia/Seoul";
-  modules.system.locale = "en_US.UTF-8";
+  modules = {
+    user.name = username;
+    system = {
+      hostname = "framework";
+      timezone = "Asia/Seoul";
+      locale = "en_US.UTF-8";
+    };
+  };
   services.printing.enable = true;
   system.stateVersion = "25.11";
 }

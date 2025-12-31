@@ -26,9 +26,7 @@ let
       azure-cli.extensions.ssh
     ])
     azure-storage-azcopy
-    cloudflared
     codex
-    gemini-cli
     opencode
     nixfmt-classic
     comma

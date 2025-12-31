@@ -1,4 +1,4 @@
-{ ... }:
+_:
 let
   opencodeConfig = {
     "$schema" = "https://opencode.ai/config.json";

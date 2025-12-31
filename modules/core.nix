@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 let
   user = config.modules.user.name;
   userHome = "/home/${user}";
@@ -14,12 +14,37 @@ let
     INCL_DATA_ROOT = "./data_root";
   };
 in {
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ user ];
+    };
+  };
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
   };
-  environment.sessionVariables = lunitSessionVariables;
+  environment = {
+    sessionVariables = lunitSessionVariables;
+    etc = {
+      "1password/custom_allowed_browsers" = {
+        text = ''
+          google-chrome
+          google-chrome-stable
+          .google-chrome-wrapped
+          .zen-wrapped
+          zen
+        '';
+        mode = "0755";
+      };
+    };
+    variables = {
+      OP_SERVICE_ACCOUNT_TOKEN = "/etc/1password/service-account-token";
+      SSH_AUTH_SOCK = onePassAgent;
+    };
+  };
   services.keyd = {
     enable = true;
     keyboards = {
@@ -73,26 +98,5 @@ in {
         '';
       };
     };
-  };
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ user ];
-  };
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        google-chrome
-        google-chrome-stable
-        .google-chrome-wrapped
-        .zen-wrapped
-        zen
-      '';
-      mode = "0755";
-    };
-  };
-  environment.variables = {
-    OP_SERVICE_ACCOUNT_TOKEN = "/etc/1password/service-account-token";
-    SSH_AUTH_SOCK = onePassAgent;
   };
 }

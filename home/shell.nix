@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ username, ... }:
 let homeDir = "/home/${username}";
 in {
   programs = {
