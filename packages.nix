@@ -85,6 +85,8 @@ let
     # LLM Tools
     ollama
     ramalama
+
+    nvfetcher
   ];
 
   mediaTools = with pkgs-unstable; [ ffmpeg-full libheif libsndfile ];
