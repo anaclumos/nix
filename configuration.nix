@@ -22,6 +22,8 @@ in {
   boot.loader.systemd-boot.configurationLimit = 100;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.systemd.enable = true;
+
+  hardware.enableRedistributableFirmware = true;
   boot.initrd.luks.devices."luks-067d3a16-727c-40f5-8510-a2cb221929cf" = {
     device = "/dev/disk/by-uuid/067d3a16-727c-40f5-8510-a2cb221929cf";
     preLVM = true;
