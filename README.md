@@ -2,12 +2,10 @@
 
 
 ![Framework](https://img.shields.io/badge/Framework-Laptop_13-000000?style=flat&logo=framework&logoColor=white)
+![AMD](https://img.shields.io/badge/Ryzen_AI_9_HX_370_w\_adeon-890M-ED1C24?style=flat&logo=amd&logoColor=white)
 ![Display](https://img.shields.io/badge/Display-2880x1920_@_120Hz-000000?style=flat)
 ![RAM](https://img.shields.io/badge/RAM-Crucial_96GB_DDR5_5600MHz-000000?style=flat)
 ![Storage](https://img.shields.io/badge/Storage-4TB_SN850X-000000?style=flat)
-
-![AMD](https://img.shields.io/badge/Ryzen_AI_9_HX_370-ED1C24?style=flat&logo=amd&logoColor=white)
-![Radeon](https://img.shields.io/badge/Radeon-890M-ED1C24?style=flat&logo=amd&logoColor=white)
 
 ![NixOS](https://img.shields.io/badge/NixOS-25.11-5277C3?style=flat&logo=nixos&logoColor=white)
 ![GNOME](https://img.shields.io/badge/GNOME-49.2-4A86CF?style=flat&logo=gnome&logoColor=white)
