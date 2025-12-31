@@ -12,7 +12,8 @@
     unms-research.url = "github:anaclumos/unms-research.nix";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager
+    , nixos-hardware, ... }:
     let
       system = "x86_64-linux";
       username = "sunghyun";
