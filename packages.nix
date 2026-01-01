@@ -58,16 +58,6 @@ let
     nvfetcher
   ];
   mediaTools = with pkgs-unstable; [ ffmpeg-full libheif libsndfile ];
-  games = with pkgs; [
-    dolphin-emu
-    bottles
-    (lutris.override { extraPkgs = pkgs: [ pkgs.libnghttp2 pkgs.winetricks ]; })
-    wineWowPackages.staging
-    winetricks
-    vulkan-tools
-    dxvk
-    chiaki-ng
-  ];
   applications = with pkgs; [
     slack
     teams-for-linux
@@ -121,6 +111,6 @@ let
     gnomeExtensions.blur-my-shell
   ];
 in {
-  inherit developmentTools mediaTools games applications gnomeTools systemTools
+  inherit developmentTools mediaTools applications gnomeTools systemTools
     cloudTools iconThemes gnomeExtensionsList;
 }

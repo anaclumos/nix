@@ -60,11 +60,6 @@ in {
         default = true;
         description = "Enable development tools";
       };
-      enableGaming = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Enable gaming packages";
-      };
       enableMedia = mkOption {
         type = types.bool;
         default = true;

@@ -24,8 +24,8 @@ in {
       time = "en_US.UTF-8";
     };
     packages = lib.unique (packages.developmentTools ++ packages.mediaTools
-      ++ packages.games ++ packages.applications ++ packages.gnomeTools
-      ++ packages.systemTools ++ packages.cloudTools ++ packages.iconThemes
+      ++ packages.applications ++ packages.gnomeTools ++ packages.systemTools
+      ++ packages.cloudTools ++ packages.iconThemes
       ++ packages.gnomeExtensionsList);
   };
   fonts.fontconfig.enable = false;

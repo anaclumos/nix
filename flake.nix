@@ -38,7 +38,7 @@
         config.allowUnfree = true;
       };
 
-      specialArgs = { inherit inputs username; };
+      specialArgs = { inherit inputs username pkgs-unstable; };
 
       homeExtraArgs = { inherit inputs username pkgs-unstable; };
     in {
