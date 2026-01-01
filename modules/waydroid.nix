@@ -233,6 +233,17 @@ in {
   # Enable Waydroid virtualization
   virtualisation.waydroid.enable = true;
 
+  # Required kernel modules for Waydroid networking (iptables)
+  boot.kernelModules = [
+    "ip_tables"
+    "iptable_nat"
+    "iptable_filter"
+    "iptable_mangle"
+    "ip6_tables"
+    "ip6table_nat"
+    "ip6table_filter"
+  ];
+
   # Add helper scripts to system packages
   environment.systemPackages = [
     waydroidSetupScript
