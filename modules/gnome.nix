@@ -30,7 +30,7 @@
         sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
         sleep-inactive-battery-type = "nothing";
         sleep-inactive-battery-timeout = lib.gvariant.mkInt32 0;
-        power-button-action = "hibernate";
+        power-button-action = "suspend";
       };
     };
   }];

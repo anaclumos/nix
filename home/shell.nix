@@ -31,7 +31,6 @@ in {
           "cpu"
           "gpu"
           "memory"
-          "swap"
           "disk"
           "battery"
           "poweradapter"
