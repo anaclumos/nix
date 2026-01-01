@@ -20,7 +20,6 @@
   <a href="#installation">Installation</a> •
   <a href="#features">Features</a> •
   <a href="#keyboard">Keyboard</a> •
-  <a href="#waydroid">Waydroid</a> •
   <a href="#architecture">Architecture</a>
 </p>
 
@@ -126,32 +125,6 @@ Inspired by Japanese keyboard input on macOS. Each hand has a dedicated language
 
 No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `DeactivateKeys=Control+Control_L`.
 
-## Waydroid
-
-Android tablet emulation via [Waydroid](https://waydro.id/) for running KakaoTalk in tablet mode.
-
-### Device Spoofing
-
-Spoofs as **Samsung Galaxy Tab S7 (SM-T870)** — a [confirmed supported device](https://www.clien.net/service/board/park/15833435) for KakaoTalk's "use with other devices" feature.
-
-### Commands
-
-| Command | Description |
-|---------|-------------|
-| `sudo waydroid-setup-kakaotalk` | Initialize Waydroid + apply Galaxy Tab S7 props |
-| `sudo waydroid-install-arm` | Install ARM translation (libhoudini) via UV |
-| `sudo waydroid-certify-play` | Register device with Google Play |
-| `waydroid-kakaotalk` | Quick launch KakaoTalk |
-
-### Setup
-
-```sh
-sudo waydroid-setup-kakaotalk
-sudo waydroid-install-arm
-waydroid session stop && waydroid session start
-waydroid show-full-ui  # Install KakaoTalk from Play Store
-```
-
 ## Architecture
 
 ```
@@ -170,8 +143,7 @@ waydroid show-full-ui  # Install KakaoTalk from Play Store
 │   ├── gnome.nix             # Desktop environment
 │   ├── input-method.nix      # fcitx5 + Hangul
 │   ├── nix-settings.nix      # Caches, GC, nix-ld
-│   ├── media.nix             # PipeWire, GPU drivers
-│   └── waydroid.nix          # Android emulation, KakaoTalk tablet
+│   └── media.nix             # PipeWire, GPU drivers
 ├── home/
 │   ├── default.nix           # Home Manager entry
 │   ├── shell.nix             # Zsh, Atuin, aliases
