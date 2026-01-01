@@ -26,7 +26,7 @@
         "code.desktop"
         "obsidian.desktop"
         "slack.desktop"
-        "org.telegram.desktop.desktop"
+        "kakaotalk.desktop"
         "tableplus.desktop"
         "com.vixalien.sticky.desktop"
       ];
