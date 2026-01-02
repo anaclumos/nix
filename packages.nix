@@ -18,6 +18,7 @@ let
     vscode-extensions.biomejs.biome
     gh
     terraform
+    tree
     argocd
     k9s
     kubectl
