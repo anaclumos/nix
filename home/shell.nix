@@ -73,8 +73,7 @@ in {
             | head -c 200000 | claude -p 'Write a git commit message for these changes. Use lowercase, imperative mood, max 50 chars. Output only the message, no quotes.')"'';
         build =
           "cd ~/Desktop/nix && nixfmt **/*.nix && nix-channel --update && nix --extra-experimental-features 'nix-command flakes' flake update && sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --flake .#framework --impure && ngc";
-        nixgit = ''
-          cd ~/Desktop/nix && ai -a && git push'';
+        nixgit = "cd ~/Desktop/nix && git add -A && ai && git push";
         ec = "expressvpn connect";
         ed = "expressvpn disconnect";
         x = "exit";
