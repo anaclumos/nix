@@ -63,10 +63,18 @@ in {
         fastfetch && if [ "$(pwd)" = "${homeDir}" ]; then cd ~/Desktop; fi
       '';
       shellAliases = {
+        ai = ''
+          git commit -m "$(git diff --cached -- . \
+            ':!README.md' ':!*.lock' ':!*.lockb' ':!flake.lock' \
+            ':!package-lock.json' ':!yarn.lock' ':!pnpm-lock.yaml' \
+            ':!*.min.js' ':!*.min.css' ':!*.map' \
+            ':!*.generated.*' ':!*_generated.*' \
+            ':!*.svg' ':!*.png' ':!*.ico' \
+            | head -c 200000 | claude -p 'Write a git commit message for these changes. Use lowercase, imperative mood, max 50 chars. Output only the message, no quotes.')"'';
         build =
           "cd ~/Desktop/nix && nixfmt **/*.nix && nix-channel --update && nix --extra-experimental-features 'nix-command flakes' flake update && sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --flake .#framework --impure && ngc";
         nixgit = ''
-          cd ~/Desktop/nix && git commit -m "$(date +"%Y-%m-%d")" -a && git push'';
+          cd ~/Desktop/nix && ai -a && git push'';
         ec = "expressvpn connect";
         ed = "expressvpn disconnect";
         x = "exit";
