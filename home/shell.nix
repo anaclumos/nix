@@ -83,6 +83,7 @@ in {
           "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +100 && sudo nix-store --gc";
         airdrop =
           "cd ~/Screenshots && sudo tailscale file cp *.png iphone-17-pro: && rm *.png";
+        qqqq = "cd ~/Desktop/extracranial && bun run save && exit";
       };
     };
   };

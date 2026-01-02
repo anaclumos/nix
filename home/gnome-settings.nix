@@ -82,7 +82,11 @@
       show-mounts = true;
       hotkeys-overlay = false;
       hotkeys-show-dock = false;
+      multi-monitor = false;
+      preferred-monitor = -2;
+      preferred-monitor-by-connector = "eDP-1";
     };
+    "org/gnome/shell/extensions/ding" = { show-in-secondary = false; };
     "org/gnome/shell/extensions/blur-my-shell" = { pipelines-version = 3; };
     "org/gnome/shell/extensions/blur-my-shell/panel" = { blur = false; };
     "org/gnome/settings-daemon/plugins/media-keys" = {
