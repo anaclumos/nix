@@ -163,7 +163,7 @@ No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `Deac
 | Alias | Description |
 |-------|-------------|
 | `build` | Format, update flake, rebuild, garbage collect |
-| `nixgit` | Commit and push with date message |
+| `nixgit` | Commit with AI message and push |
 | `ngc` | Garbage collect (keep 100 generations) |
 | `zz` | Open nix config in VS Code |
 | `airdrop` | Send screenshots to iPhone via Taildrop |
@@ -172,11 +172,15 @@ No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `Deac
 
 ## Development
 
+Linting and formatting tools are installed system-wide:
+
 ```sh
-nix develop
+statix check .   # Lint for anti-patterns
+deadnix .        # Find dead code
+nixfmt **/*.nix  # Format (RFC style)
 ```
 
-Provides: `nixfmt` (RFC style), `statix`, `deadnix`, `nil`, `nix-tree`, `nvd`, `nix-diff`
+Also available: `nil` (LSP), `nix-tree`, `nvd`, `nix-diff`
 
 ## Custom Packages
 
