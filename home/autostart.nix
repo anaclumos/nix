@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   xdg.configFile = {
     "autostart/1password.desktop".text = ''
       [Desktop Entry]

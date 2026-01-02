@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [ ./opencode.nix ];
 
   home.file.".claude/settings.json" = {
@@ -8,8 +9,14 @@
 
   home.file.".gemini/settings.json" = {
     force = true;
-    text = builtins.toJSON {
-      general = { sessionRetention = { enabled = false; }; };
-    } + "\n";
+    text =
+      builtins.toJSON {
+        general = {
+          sessionRetention = {
+            enabled = false;
+          };
+        };
+      }
+      + "\n";
   };
 }

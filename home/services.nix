@@ -6,8 +6,12 @@ let
     "${tb}/bin/thunderbird" "$@"
     systemctl --user start thunderbird-headless.service
   '';
-in {
-  home.packages = [ tb tb-ui ];
+in
+{
+  home.packages = [
+    tb
+    tb-ui
+  ];
   services.mpris-proxy.enable = true;
   systemd.user.services.timewall = {
     Unit = {
@@ -16,13 +20,13 @@ in {
       PartOf = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.timewall}/bin/timewall set --daemon '${
-          ../wallpaper/solar-gradient.heic
-        }'";
+      ExecStart = "${pkgs.timewall}/bin/timewall set --daemon '${../wallpaper/solar-gradient.heic}'";
       Restart = "always";
       RestartSec = "10";
     };
-    Install = { WantedBy = [ "graphical-session.target" ]; };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
   xdg.configFile."timewall/config.toml" = {
     text = ''
@@ -34,17 +38,21 @@ in {
   };
   systemd.user.services.thunderbird-headless = {
     Unit = {
-      Description =
-        "Thunderbird headless (background mail checks + notifications)";
+      Description = "Thunderbird headless (background mail checks + notifications)";
       After = [ "graphical-session.target" ];
       PartOf = [ "graphical-session.target" ];
     };
     Service = {
       ExecStart = "${tb}/bin/thunderbird --headless";
       Restart = "on-failure";
-      Environment = [ "DISPLAY=:0" "WAYLAND_DISPLAY=wayland-0" ];
+      Environment = [
+        "DISPLAY=:0"
+        "WAYLAND_DISPLAY=wayland-0"
+      ];
     };
-    Install = { WantedBy = [ "default.target" ]; };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
   xdg.desktopEntries.thunderbird = {
     name = "Thunderbird";
@@ -52,7 +60,10 @@ in {
     terminal = false;
     icon = "thunderbird";
     type = "Application";
-    categories = [ "Network" "Email" ];
+    categories = [
+      "Network"
+      "Email"
+    ];
     startupNotify = true;
   };
 }

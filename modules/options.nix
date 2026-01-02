@@ -1,9 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   sysCfg = config.modules.system;
   userCfg = config.modules.user;
-in {
+in
+{
   options.modules = {
     system = {
       hostname = mkOption {
@@ -50,7 +56,13 @@ in {
       };
       extraGroups = mkOption {
         type = types.listOf types.str;
-        default = [ "wheel" "networkmanager" "docker" "video" "audio" ];
+        default = [
+          "wheel"
+          "networkmanager"
+          "docker"
+          "video"
+          "audio"
+        ];
         description = "Additional groups for the user";
       };
     };

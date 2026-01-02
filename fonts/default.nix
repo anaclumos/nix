@@ -32,7 +32,8 @@ let
       </edit>
     </match>
   '';
-in {
+in
+{
   fonts = {
     packages = with pkgs; [
       pretendard-gov
@@ -45,9 +46,18 @@ in {
     fontDir.enable = true;
     fontconfig = {
       defaultFonts = {
-        sansSerif = [ "Pretendard GOV" "Noto Sans CJK KR" ];
-        serif = [ "Pretendard GOV" "Noto Serif CJK KR" ];
-        monospace = [ "Iosevka" "Monaspace" ];
+        sansSerif = [
+          "Pretendard GOV"
+          "Noto Sans CJK KR"
+        ];
+        serif = [
+          "Pretendard GOV"
+          "Noto Serif CJK KR"
+        ];
+        monospace = [
+          "Iosevka"
+          "Monaspace"
+        ];
         emoji = [ "Noto Color Emoji" ];
       };
       localConf = ''

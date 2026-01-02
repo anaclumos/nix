@@ -23,7 +23,13 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, nixpkgs-unstable, home-manager, nixos-hardware, ... }:
+    inputs@{
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      nixos-hardware,
+      ...
+    }:
     let
       system = "x86_64-linux";
       username = "sunghyun";
@@ -41,7 +47,8 @@
       specialArgs = { inherit inputs username pkgs-unstable; };
 
       homeExtraArgs = { inherit inputs username pkgs-unstable; };
-    in {
+    in
+    {
       nixosConfigurations = {
         framework = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
@@ -56,7 +63,7 @@
                 useGlobalPkgs = false;
                 users.${username} = import ./home;
                 extraSpecialArgs = homeExtraArgs;
-                sharedModules = [{ nixpkgs.config.allowUnfree = true; }];
+                sharedModules = [ { nixpkgs.config.allowUnfree = true; } ];
               };
             }
           ];

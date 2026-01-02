@@ -1,8 +1,16 @@
-{ lib, pkgs, pkgs-unstable, inputs, username, ... }:
+{
+  lib,
+  pkgs,
+  pkgs-unstable,
+  inputs,
+  username,
+  ...
+}:
 let
   homeDir = "/home/${username}";
   packages = import ../packages.nix { inherit pkgs pkgs-unstable inputs; };
-in {
+in
+{
   imports = [
     ./shell.nix
     ./git.nix
@@ -23,10 +31,16 @@ in {
       monetary = "en_US.UTF-8";
       time = "en_US.UTF-8";
     };
-    packages = lib.unique (packages.developmentTools ++ packages.mediaTools
-      ++ packages.applications ++ packages.gnomeTools ++ packages.systemTools
-      ++ packages.cloudTools ++ packages.iconThemes
-      ++ packages.gnomeExtensionsList);
+    packages = lib.unique (
+      packages.developmentTools
+      ++ packages.mediaTools
+      ++ packages.applications
+      ++ packages.gnomeTools
+      ++ packages.systemTools
+      ++ packages.cloudTools
+      ++ packages.iconThemes
+      ++ packages.gnomeExtensionsList
+    );
   };
   fonts.fontconfig.enable = false;
   programs.home-manager.enable = true;

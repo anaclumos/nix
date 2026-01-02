@@ -1,6 +1,8 @@
 { username, ... }:
-let homeDir = "/home/${username}";
-in {
+let
+  homeDir = "/home/${username}";
+in
+{
   programs = {
     direnv = {
       enable = true;
@@ -57,7 +59,13 @@ in {
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
-        plugins = [ "git" "docker" "npm" "sudo" "command-not-found" ];
+        plugins = [
+          "git"
+          "docker"
+          "npm"
+          "sudo"
+          "command-not-found"
+        ];
       };
       initContent = ''
         fastfetch && if [ "$(pwd)" = "${homeDir}" ]; then cd ~/Desktop; fi
@@ -71,8 +79,7 @@ in {
             ':!*.generated.*' ':!*_generated.*' \
             ':!*.svg' ':!*.png' ':!*.ico' \
             | head -c 200000 | claude -p 'Write a git commit message for these changes. Use lowercase, imperative mood, max 50 chars. Output only the message, no quotes.')"'';
-        build =
-          "cd ~/Desktop/nix && nixfmt **/*.nix && nix-channel --update && nix --extra-experimental-features 'nix-command flakes' flake update && sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --flake .#framework --impure && ngc";
+        build = "cd ~/Desktop/nix && nixfmt **/*.nix && nix-channel --update && nix --extra-experimental-features 'nix-command flakes' flake update && sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --flake .#framework --impure && ngc";
         nixgit = "cd ~/Desktop/nix && git add -A && ai && git push";
         ec = "expressvpn connect";
         ed = "expressvpn disconnect";
@@ -80,16 +87,13 @@ in {
         zz = "code ~/Desktop/nix";
         ss = "source ~/.zshrc";
         cc = "code .";
-        sha =
-          "git push && echo Done in $(git rev-parse HEAD) | xclip -selection clipboard";
+        sha = "git push && echo Done in $(git rev-parse HEAD) | xclip -selection clipboard";
         emptyfolder = "find . -type d -empty -delete";
         npm = "bun";
         npx = "bunx";
         chat = "codex --yolo -c model_reasoning_effort='high'";
-        ngc =
-          "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +100 && sudo nix-store --gc";
-        airdrop =
-          "cd ~/Screenshots && sudo tailscale file cp *.png iphone-17-pro: && rm *.png";
+        ngc = "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +100 && sudo nix-store --gc";
+        airdrop = "cd ~/Screenshots && sudo tailscale file cp *.png iphone-17-pro: && rm *.png";
         qqqq = "cd ~/Desktop/extracranial && bun run save && exit";
       };
     };

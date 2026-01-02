@@ -1,4 +1,8 @@
-{ pkgs, pkgs-unstable, inputs }:
+{
+  pkgs,
+  pkgs-unstable,
+  inputs,
+}:
 let
   developmentTools = with pkgs-unstable; [
     nodejs
@@ -62,7 +66,11 @@ let
     ramalama
     nvfetcher
   ];
-  mediaTools = with pkgs-unstable; [ ffmpeg-full libheif libsndfile ];
+  mediaTools = with pkgs-unstable; [
+    ffmpeg-full
+    libheif
+    libsndfile
+  ];
   applications = with pkgs; [
     slack
     teams-for-linux
@@ -94,11 +102,9 @@ let
     btop
     libnotify
   ];
-  cloudTools = with pkgs;
-    [
-      (google-cloud-sdk.withExtraComponents
-        [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
-    ];
+  cloudTools = with pkgs; [
+    (google-cloud-sdk.withExtraComponents [ google-cloud-sdk.components.gke-gcloud-auth-plugin ])
+  ];
   iconThemes = with pkgs; [
     pantheon.elementary-icon-theme
     hicolor-icon-theme
@@ -115,7 +121,16 @@ let
     gnomeExtensions.desktop-icons-ng-ding
     gnomeExtensions.blur-my-shell
   ];
-in {
-  inherit developmentTools mediaTools applications gnomeTools systemTools
-    cloudTools iconThemes gnomeExtensionsList;
+in
+{
+  inherit
+    developmentTools
+    mediaTools
+    applications
+    gnomeTools
+    systemTools
+    cloudTools
+    iconThemes
+    gnomeExtensionsList
+    ;
 }

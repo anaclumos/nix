@@ -1,4 +1,5 @@
-{ username, ... }: {
+{ username, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ./fonts/default.nix

@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   programs.dconf.enable = true;
   services = {
     xserver.enable = true;
@@ -21,17 +22,21 @@
     geary
     gnome-text-editor
   ];
-  programs.dconf.profiles.user.databases = [{
-    settings = {
-      "org/gnome/desktop/session" = { idle-delay = lib.gvariant.mkUint32 0; };
-      "org/gnome/settings-daemon/plugins/power" = {
-        idle-dim = false;
-        sleep-inactive-ac-type = "nothing";
-        sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
-        sleep-inactive-battery-type = "nothing";
-        sleep-inactive-battery-timeout = lib.gvariant.mkInt32 0;
-        power-button-action = "suspend";
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/desktop/session" = {
+          idle-delay = lib.gvariant.mkUint32 0;
+        };
+        "org/gnome/settings-daemon/plugins/power" = {
+          idle-dim = false;
+          sleep-inactive-ac-type = "nothing";
+          sleep-inactive-ac-timeout = lib.gvariant.mkInt32 0;
+          sleep-inactive-battery-type = "nothing";
+          sleep-inactive-battery-timeout = lib.gvariant.mkInt32 0;
+          power-button-action = "suspend";
+        };
       };
-    };
-  }];
+    }
+  ];
 }

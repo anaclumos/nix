@@ -4,8 +4,11 @@ let
     "$schema" = "https://opencode.ai/config.json";
     plugin = [ "oh-my-opencode" ];
   };
-  ohMyOpencodeConfig = { google_auth = true; };
-in {
+  ohMyOpencodeConfig = {
+    google_auth = true;
+  };
+in
+{
   xdg.configFile."opencode/opencode.json" = {
     force = true;
     text = builtins.toJSON opencodeConfig + "\n";
