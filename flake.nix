@@ -63,20 +63,6 @@
         };
       };
 
-      devShells.${system}.default = pkgs.mkShell {
-        name = "nixos-config";
-        packages = with pkgs; [
-          nixfmt-rfc-style
-          nil
-          statix
-          deadnix
-          nix-tree
-          nvd
-          nix-diff
-        ];
-      };
-
       formatter.${system} = pkgs.nixfmt-rfc-style;
-
     };
 }

@@ -29,7 +29,11 @@ let
     azure-storage-azcopy
     codex
     opencode
-    nixfmt-classic
+    nixfmt-rfc-style
+    nil
+    statix
+    deadnix
+    nix-diff
     comma
     nix-index
     mariadb
