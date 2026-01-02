@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  tb = pkgs.thunderbird;
+  tb = pkgs.thunderbird-latest;
   tb-ui = pkgs.writeShellScriptBin "thunderbird-ui" ''
     systemctl --user stop thunderbird-headless.service 2>/dev/null || true
     "${tb}/bin/thunderbird" "$@"
