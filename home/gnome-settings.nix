@@ -132,7 +132,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/kakaotalk" = {
       name = "Launch or Focus KakaoTalk";
-      command = "bash -c 'wmctrl -x -a KakaoTalk || gio launch kakaotalk.desktop'";
+      command = "gio launch kakaotalk.desktop";
       binding = "<Ctrl><Alt><Super><Shift>m";
     };
   };
