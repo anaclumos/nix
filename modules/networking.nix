@@ -1,9 +1,11 @@
 _: {
   networking.networkmanager = {
     enable = true;
-    wifi.powersave = true;
+    wifi.backend = "iwd";
     dns = "systemd-resolved";
   };
+
+  networking.wireless.iwd.enable = true;
 
   services = {
     resolved = {
