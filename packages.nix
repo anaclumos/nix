@@ -91,6 +91,7 @@ let
     sqlitebrowser
     inputs.tableplus.packages.${pkgs.stdenv.hostPlatform.system}.default
     geekbench
+    gitify
   ];
   gnomeTools = with pkgs; [ refine ];
   systemTools = with pkgs; [
