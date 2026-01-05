@@ -46,11 +46,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767587365,
-        "narHash": "sha256-A61N7Olcp2NKxI7Vm/cEs/4eW+sb44yp8O9EU3eDiec=",
+        "lastModified": 1767599787,
+        "narHash": "sha256-jaLl11EMtOWK7Dg9LghmO1jAFj/mu8e/B8gu46AftrU=",
         "owner": "anaclumos",
         "repo": "kakaotalk.nix",
-        "rev": "faad328c067a7c6c0da44fe37d61bfe4d8aade07",
+        "rev": "77b6bbfabb1344bb00a2bcde33dafbce22346664",
         "type": "github"
       },
       "original": {
