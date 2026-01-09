@@ -33,7 +33,7 @@ let
     azure-storage-azcopy
     codex
     opencode
-    nixfmt-rfc-style
+    nixfmt
     nil
     statix
     deadnix

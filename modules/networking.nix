@@ -3,6 +3,7 @@ _: {
     enable = true;
     wifi.backend = "iwd";
     dns = "systemd-resolved";
+    settings.connectivity.uri = "http://nmcheck.gnome.org/check_network_status.txt";
   };
 
   networking.wireless.iwd.enable = true;
