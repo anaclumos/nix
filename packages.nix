@@ -78,7 +78,12 @@ let
     zoom-us
     telegram-desktop
     inputs.kakaotalk.packages.${pkgs.stdenv.hostPlatform.system}.default
-    google-chrome
+    (google-chrome.override {
+      commandLineArgs = [
+        "--ozone-platform-hint=wayland"
+        "--enable-features=TouchpadOverscrollHistoryNavigation"
+      ];
+    })
     obsidian
     logseq
     sticky-notes
