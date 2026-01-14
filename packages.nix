@@ -45,6 +45,7 @@ let
     whois
     unzip
     zip
+    p7zip
     act
     biome
     lsof
