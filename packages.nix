@@ -82,7 +82,8 @@ let
     (google-chrome.override {
       commandLineArgs = [
         "--ozone-platform-hint=wayland"
-        "--enable-features=TouchpadOverscrollHistoryNavigation"
+        "--enable-features=TouchpadOverscrollHistoryNavigation,UseOzonePlatform"
+        "--disable-smooth-scrolling"
       ];
     })
     obsidian
