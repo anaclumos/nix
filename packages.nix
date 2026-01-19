@@ -4,6 +4,11 @@
   inputs,
 }:
 let
+  customPackages = {
+    kakaotalk = pkgs-unstable.callPackage ./pkgs/kakaotalk.nix { inherit inputs; };
+    tableplus = pkgs-unstable.callPackage ./pkgs/tableplus.nix { inherit inputs; };
+  };
+
   developmentTools = with pkgs-unstable; [
     nodejs
     bun
@@ -78,7 +83,7 @@ let
     beeper
     zoom-us
     telegram-desktop
-    inputs.kakaotalk.packages.${pkgs.stdenv.hostPlatform.system}.default
+    customPackages.kakaotalk
     (google-chrome.override {
       commandLineArgs = [
         "--ozone-platform-hint=wayland"
@@ -96,7 +101,7 @@ let
     timewall
     trayscale
     sqlitebrowser
-    inputs.tableplus.packages.${pkgs.stdenv.hostPlatform.system}.default
+    customPackages.tableplus
     geekbench
     gitify
   ];

@@ -4,11 +4,22 @@
   pkgs-unstable,
   inputs,
   username,
+  osConfig ? null,
   ...
 }:
 let
   homeDir = "/home/${username}";
-  packages = import ../packages.nix { inherit pkgs pkgs-unstable inputs; };
+  packageSets = import ../packages.nix { inherit pkgs pkgs-unstable inputs; };
+
+  packageToggles =
+    if osConfig != null && osConfig ? modules && osConfig.modules ? packages then
+      osConfig.modules.packages
+    else
+      {
+        enableDevelopment = true;
+        enableMedia = true;
+        enableCloud = true;
+      };
 in
 {
   imports = [
@@ -32,14 +43,14 @@ in
       time = "en_US.UTF-8";
     };
     packages = lib.unique (
-      packages.developmentTools
-      ++ packages.mediaTools
-      ++ packages.applications
-      ++ packages.gnomeTools
-      ++ packages.systemTools
-      ++ packages.cloudTools
-      ++ packages.iconThemes
-      ++ packages.gnomeExtensionsList
+      packageSets.applications
+      ++ packageSets.gnomeTools
+      ++ packageSets.systemTools
+      ++ packageSets.iconThemes
+      ++ packageSets.gnomeExtensionsList
+      ++ lib.optionals packageToggles.enableDevelopment packageSets.developmentTools
+      ++ lib.optionals packageToggles.enableMedia packageSets.mediaTools
+      ++ lib.optionals packageToggles.enableCloud packageSets.cloudTools
     );
   };
   fonts.fontconfig.enable = false;

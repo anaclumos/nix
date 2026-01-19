@@ -34,40 +34,40 @@
       system = "x86_64-linux";
       username = "sunghyun";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
+      mkPkgs =
+        nixpkgsInput:
+        import nixpkgsInput {
+          inherit system;
+          config.allowUnfree = true;
+        };
+
+      pkgs = mkPkgs nixpkgs;
+      pkgs-unstable = mkPkgs nixpkgs-unstable;
+
+      extraArgs = { inherit inputs username pkgs-unstable; };
+      allowUnfreeModule = {
+        nixpkgs.config.allowUnfree = true;
       };
-
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-      specialArgs = { inherit inputs username pkgs-unstable; };
-
-      homeExtraArgs = { inherit inputs username pkgs-unstable; };
     in
     {
-      nixosConfigurations = {
-        framework = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            { nixpkgs.config.allowUnfree = true; }
-            nixos-hardware.nixosModules.framework-amd-ai-300-series
-            ./configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = false;
-                users.${username} = import ./home;
-                extraSpecialArgs = homeExtraArgs;
-                sharedModules = [ { nixpkgs.config.allowUnfree = true; } ];
-              };
-            }
-          ];
-        };
+      nixosConfigurations.framework = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = extraArgs;
+        modules = [
+          allowUnfreeModule
+          nixos-hardware.nixosModules.framework-amd-ai-300-series
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = false;
+              users.${username} = import ./home;
+              extraSpecialArgs = extraArgs;
+              sharedModules = [ allowUnfreeModule ];
+            };
+          }
+        ];
       };
 
       formatter.${system} = pkgs.nixfmt;

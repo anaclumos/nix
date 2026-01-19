@@ -139,11 +139,15 @@ No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `Deac
 │   ├── power.nix             # Zram, hibernation, IO schedulers
 │   ├── security.nix          # Firewall, kernel hardening
 │   ├── core.nix              # keyd, Docker, 1Password
+│   ├── keyd.conf             # keyd mappings (macOS-style)
 │   ├── networking.nix        # Tailscale, VPN
 │   ├── gnome.nix             # Desktop environment
 │   ├── input-method.nix      # fcitx5 + Hangul
 │   ├── nix-settings.nix      # Caches, GC, nix-ld
 │   └── media.nix             # PipeWire, GPU drivers
+├── pkgs/
+│   ├── kakaotalk.nix          # KakaoTalk package (unfree)
+│   └── tableplus.nix          # TablePlus package (unfree)
 ├── home/
 │   ├── default.nix           # Home Manager entry
 │   ├── shell.nix             # Zsh, Atuin, aliases
