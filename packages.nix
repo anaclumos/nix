@@ -71,6 +71,7 @@ let
     ollama
     ramalama
     nvfetcher
+    infisical
   ];
   mediaTools = with pkgs-unstable; [
     ffmpeg-full
