@@ -24,11 +24,6 @@ in
     text = builtins.toJSON ohMyOpencodeConfig + "\n";
   };
 
-  xdg.configFile."opencode/package.json" = {
-    force = true;
-    text = builtins.toJSON opencodePackageJson + "\n";
-  };
-
   home.activation.installOpencodePlugins = {
     after = [
       "writeBoundary"
@@ -36,9 +31,11 @@ in
     ];
     before = [ ];
     data = ''
-      if [ -f "$HOME/.config/opencode/package.json" ]; then
-        ${pkgs-unstable.bun}/bin/bun install --cwd "$HOME/.config/opencode" 2>/dev/null || true
-      fi
+      OPENCODE_DIR="$HOME/.config/opencode"
+      mkdir -p "$OPENCODE_DIR"
+      rm -f "$OPENCODE_DIR/package.json"
+      printf '%s\n' '${builtins.toJSON opencodePackageJson}' > "$OPENCODE_DIR/package.json"
+      ${pkgs-unstable.bun}/bin/bun install --cwd "$OPENCODE_DIR" 2>/dev/null || true
     '';
   };
 }
