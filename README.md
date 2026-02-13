@@ -39,7 +39,7 @@
 ## Installation
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/anaclumos/nix/main/bootstrap.sh | sh
+curl -fsSL https://raw.githubusercontent.com/anaclumos/nix/main/bootstrap.sh | bash
 ```
 
 Bootstraps a fresh NixOS installation into a fully configured system. Includes hardware detection, firmware updates, and automatic reboot.
