@@ -4,8 +4,8 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
-      font-name = "Pretendard GOV 12";
-      document-font-name = "Pretendard GOV 12";
+      font-name = "Pretendard 12";
+      document-font-name = "Pretendard 12";
       monospace-font-name = "Iosevka 12";
       icon-theme = "Colloid";
       cursor-theme = "elementary";
@@ -14,7 +14,7 @@
       enable-hot-corners = false;
     };
     "org/gnome/desktop/wm/preferences" = {
-      titlebar-font = "Pretendard GOV 12";
+      titlebar-font = "Pretendard 12";
     };
     "org/gnome/system/locale" = {
       region = "en_US.UTF-8";

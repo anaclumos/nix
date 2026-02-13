@@ -28,7 +28,7 @@ let
         <string>${font}</string>
       </test>
       <edit name="family" mode="assign" binding="same">
-        <string>Pretendard GOV</string>
+        <string>Pretendard</string>
       </edit>
     </match>
   '';
@@ -36,7 +36,7 @@ in
 {
   fonts = {
     packages = with pkgs; [
-      pretendard-gov
+      pretendard
       monaspace
       iosevka
       noto-fonts-cjk-sans
@@ -47,11 +47,11 @@ in
     fontconfig = {
       defaultFonts = {
         sansSerif = [
-          "Pretendard GOV"
+          "Pretendard"
           "Noto Sans CJK KR"
         ];
         serif = [
-          "Pretendard GOV"
+          "Pretendard"
           "Noto Serif CJK KR"
         ];
         monospace = [

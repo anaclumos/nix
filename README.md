@@ -68,7 +68,7 @@ Bootstraps a fresh NixOS installation into a fully configured system. Includes h
 
 - **[GNOME 49 "Brescia"](https://release.gnome.org/49/)** on Wayland with curated extensions
 - **Dynamic wallpaper** — Solar gradient synced to Seoul time via [Timewall](https://github.com/bcyran/timewall)
-- **[Pretendard GOV](https://github.com/orioncactus/pretendard)** — Korea's pan-government design system typeface with 20+ font aliases
+- **[Pretendard](https://github.com/orioncactus/pretendard)** — Neo-grotesque typeface with 20+ font aliases
 - **Dash to Dock** — Auto-hiding dock with intellihide
 - **Unite** — Clean panel without window decorations
 - **Blur My Shell** — Gaussian blur effects
