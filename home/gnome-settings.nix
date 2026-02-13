@@ -26,7 +26,7 @@
         "thunderbird.desktop"
         "spotify.desktop"
         "org.gnome.Calendar.desktop"
-        "code.desktop"
+        "dev.zed.Zed.desktop"
         "obsidian.desktop"
         "slack.desktop"
         "kakaotalk.desktop"

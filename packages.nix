@@ -23,8 +23,7 @@ let
     moon
     lefthook
     claude-code
-    vscode
-    vscode-extensions.biomejs.biome
+    zed-editor-fhs
     gh
     terraform
     tree
