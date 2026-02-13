@@ -4,16 +4,6 @@ _: {
   services = {
     power-profiles-daemon.enable = true;
 
-    logind.settings.Login = {
-      HandleLidSwitch = "suspend";
-      HandleLidSwitchDocked = "ignore";
-      HandleLidSwitchExternalPower = "ignore";
-      HandlePowerKey = "suspend";
-      HandlePowerKeyLongPress = "poweroff";
-      IdleAction = "ignore";
-      IdleActionSec = 0;
-    };
-
     udev.extraRules = ''
       ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="none"
       ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
