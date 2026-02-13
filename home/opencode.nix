@@ -6,12 +6,6 @@ let
   };
   ohMyOpencodeConfig = {
     google_auth = true;
-    agents = {
-      # orchestrator-sisyphus = {
-      #   model = "openai/gpt-5.2-codex";
-      #   variant = "xhigh";
-      # };
-    };
   };
   opencodePackageJson = {
     dependencies = {
