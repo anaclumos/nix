@@ -45,9 +45,7 @@ sudo fwupdmgr update -y || echo "==> No firmware updates available or update req
 
 echo "==> Running final build..."
 cd "$TARGET_DIR"
-nixfmt **/*.nix
-nix-channel --update
-sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --flake .#framework --impure
+nix-shell -p git nixfmt-classic --run "nixfmt **/*.nix && nix-channel --update && sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --flake .#framework --impure"
 sudo nix-env -p /nix/var/nix/profiles/system --delete-generations +100
 sudo nix-store --gc
 
