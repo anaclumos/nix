@@ -2,6 +2,7 @@
 let
   opencodeConfig = {
     "$schema" = "https://opencode.ai/config.json";
+    model = "anthropic/claude-opus-4-6";
     plugin = [ "oh-my-opencode" ];
   };
   ohMyOpencodeConfig = {
