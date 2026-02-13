@@ -10,7 +10,7 @@ let
   };
   opencodePackageJson = {
     dependencies = {
-      "oh-my-opencode" = "beta";
+      "oh-my-opencode" = "latest";
     };
   };
 in
