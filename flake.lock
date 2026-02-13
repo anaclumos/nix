@@ -39,26 +39,6 @@
         "type": "github"
       }
     },
-    "kakaotalk": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1767599787,
-        "narHash": "sha256-jaLl11EMtOWK7Dg9LghmO1jAFj/mu8e/B8gu46AftrU=",
-        "owner": "anaclumos",
-        "repo": "kakaotalk.nix",
-        "rev": "77b6bbfabb1344bb00a2bcde33dafbce22346664",
-        "type": "github"
-      },
-      "original": {
-        "owner": "anaclumos",
-        "repo": "kakaotalk.nix",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1769302137,
@@ -110,7 +90,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "kakaotalk": "kakaotalk",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",

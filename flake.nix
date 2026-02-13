@@ -12,10 +12,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    kakaotalk = {
-      url = "github:anaclumos/kakaotalk.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     tableplus = {
       url = "github:anaclumos/tableplus.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

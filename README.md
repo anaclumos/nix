@@ -146,7 +146,6 @@ No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `Deac
 │   ├── nix-settings.nix      # Caches, GC, nix-ld
 │   └── media.nix             # PipeWire, GPU drivers
 ├── pkgs/
-│   ├── kakaotalk.nix          # KakaoTalk package (unfree)
 │   └── tableplus.nix          # TablePlus package (unfree)
 ├── home/
 │   ├── default.nix           # Home Manager entry
@@ -190,7 +189,6 @@ Also available: `nil` (LSP), `nix-tree`, `nvd`, `nix-diff`
 
 This configuration uses personal flakes for packages not in nixpkgs:
 
-- [`anaclumos/kakaotalk.nix`](https://github.com/anaclumos/kakaotalk.nix) — Korean messenger
 - [`anaclumos/tableplus.nix`](https://github.com/anaclumos/tableplus.nix) — Database GUI
 
 ## License

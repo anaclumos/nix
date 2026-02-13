@@ -5,7 +5,6 @@
 }:
 let
   customPackages = {
-    kakaotalk = pkgs-unstable.callPackage ./pkgs/kakaotalk.nix { inherit inputs; };
     tableplus = pkgs-unstable.callPackage ./pkgs/tableplus.nix { inherit inputs; };
   };
 
@@ -84,7 +83,6 @@ let
     beeper
     zoom-us
     telegram-desktop
-    customPackages.kakaotalk
     (google-chrome.override {
       commandLineArgs = [
         "--ozone-platform-hint=wayland"
