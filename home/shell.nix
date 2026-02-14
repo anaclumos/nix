@@ -56,6 +56,10 @@ in
     zsh = {
       enable = true;
       autosuggestion.enable = true;
+      sessionVariables = {
+        PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH = "google-chrome-stable";
+        PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+      };
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
