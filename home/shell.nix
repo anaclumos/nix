@@ -1,4 +1,4 @@
-{ username, ... }:
+{ pkgs, username, ... }:
 let
   homeDir = "/home/${username}";
 in
@@ -57,8 +57,9 @@ in
       enable = true;
       autosuggestion.enable = true;
       sessionVariables = {
-        PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH = "google-chrome-stable";
+        PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
         PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+        PLAYWRIGHT_HOST_PLATFORM_OVERRIDE = "ubuntu-24.04";
       };
       oh-my-zsh = {
         enable = true;

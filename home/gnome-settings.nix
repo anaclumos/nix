@@ -6,7 +6,7 @@
       show-battery-percentage = true;
       font-name = "Pretendard 12";
       document-font-name = "Pretendard 12";
-      monospace-font-name = "Iosevka 12";
+      monospace-font-name = "Sarasa Mono K 12";
       icon-theme = "Colloid";
       cursor-theme = "elementary";
       clock-show-weekday = true;

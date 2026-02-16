@@ -15,7 +15,8 @@ let
     uv
     ruff
     pnpm
-    nodePackages.vercel
+    playwright-driver.browsers
+    pkgs.nodePackages.vercel
     cmake
     gcc
     gnumake
@@ -27,7 +28,6 @@ let
     gh
     terraform
     tree
-    argocd
     k9s
     kubectl
     (azure-cli.withExtensions [

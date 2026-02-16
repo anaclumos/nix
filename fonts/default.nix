@@ -39,6 +39,7 @@ in
       pretendard
       monaspace
       iosevka
+      sarasa-gothic
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
@@ -55,7 +56,7 @@ in
           "Noto Serif CJK KR"
         ];
         monospace = [
-          "Iosevka"
+          "Sarasa Mono K"
           "Monaspace"
         ];
         emoji = [ "Noto Color Emoji" ];
