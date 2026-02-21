@@ -7,7 +7,6 @@ let
   customPackages = {
     kakaotalk = inputs.kakaotalk.packages.x86_64-linux.kakaotalk;
     tableplus = pkgs-unstable.callPackage ./pkgs/tableplus.nix { inherit inputs; };
-    pencil = pkgs-unstable.callPackage ./pkgs/pencil.nix { inherit inputs; };
   };
 
   developmentTools = with pkgs-unstable; [
@@ -103,7 +102,6 @@ let
     trayscale
     sqlitebrowser
     customPackages.tableplus
-    customPackages.pencil
     geekbench
     gitify
   ];

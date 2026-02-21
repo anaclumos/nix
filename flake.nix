@@ -20,10 +20,6 @@
       url = "github:anaclumos/tableplus.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    pencil = {
-      url = "github:anaclumos/pencil.nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs =
