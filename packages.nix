@@ -72,6 +72,7 @@ let
     ramalama
     nvfetcher
     infisical
+    mise
   ];
   mediaTools = with pkgs-unstable; [
     ffmpeg-full
