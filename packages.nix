@@ -39,6 +39,7 @@ let
     opencode
     nixfmt
     nil
+    nixd
     statix
     deadnix
     nix-diff
