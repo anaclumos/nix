@@ -22,7 +22,7 @@ in
           email = "hey@cho.sh";
         };
         core = {
-          editor = "code --wait";
+          editor = "zeditor --wait";
         };
         credential = {
           helper = "${lib.getExe pkgs.gh} auth git-credential";

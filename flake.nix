@@ -20,6 +20,9 @@
       url = "github:anaclumos/tableplus.nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    sunghyun-sans = {
+      url = "github:anaclumos/sunghyun-sans";
+    };
   };
 
   outputs =

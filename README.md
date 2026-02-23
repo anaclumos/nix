@@ -168,7 +168,7 @@ No toggle key. Powered by fcitx5 with `ActivateKeys=Control+Control_R` and `Deac
 | `build` | Format, update flake, rebuild, garbage collect |
 | `nixgit` | Commit with AI message and push |
 | `ngc` | Garbage collect (keep 100 generations) |
-| `zz` | Open nix config in VS Code |
+| `zz` | Open nix config in Zed |
 | `airdrop` | Send screenshots to iPhone via Taildrop |
 | `chat` | Codex with high reasoning |
 | `ec` / `ed` | ExpressVPN connect / disconnect |

@@ -89,9 +89,9 @@ in
         ec = "expressvpn connect";
         ed = "expressvpn disconnect";
         x = "exit";
-        zz = "code ~/Desktop/nix";
+        zz = "zeditor ~/Desktop/nix";
         ss = "source ~/.zshrc";
-        cc = "code .";
+        cc = "zeditor .";
         sha = "git push && echo Done in $(git rev-parse HEAD) | xclip -selection clipboard";
         emptyfolder = "find . -type d -empty -delete";
         npm = "bun";

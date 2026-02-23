@@ -4,8 +4,8 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
-      font-name = "Pretendard 12";
-      document-font-name = "Pretendard 12";
+      font-name = "Sunghyun Sans KR 12";
+      document-font-name = "Sunghyun Sans KR 12";
       monospace-font-name = "Sarasa Mono K 12";
       icon-theme = "Colloid";
       cursor-theme = "elementary";
@@ -14,7 +14,7 @@
       enable-hot-corners = false;
     };
     "org/gnome/desktop/wm/preferences" = {
-      titlebar-font = "Pretendard 12";
+      titlebar-font = "Sunghyun Sans KR 12";
     };
     "org/gnome/system/locale" = {
       region = "en_US.UTF-8";

@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   fontAliases = [
     "Helvetica"
@@ -28,7 +33,7 @@ let
         <string>${font}</string>
       </test>
       <edit name="family" mode="assign" binding="same">
-        <string>Pretendard</string>
+        <string>Sunghyun Sans KR</string>
       </edit>
     </match>
   '';
@@ -36,7 +41,7 @@ in
 {
   fonts = {
     packages = with pkgs; [
-      pretendard
+      inputs.sunghyun-sans.packages.x86_64-linux.sunghyun-sans-kr
       monaspace
       iosevka
       sarasa-gothic
@@ -48,11 +53,11 @@ in
     fontconfig = {
       defaultFonts = {
         sansSerif = [
-          "Pretendard"
+          "Sunghyun Sans KR"
           "Noto Sans CJK KR"
         ];
         serif = [
-          "Pretendard"
+          "Sunghyun Sans KR"
           "Noto Serif CJK KR"
         ];
         monospace = [
