@@ -57,12 +57,18 @@ Bootstraps a fresh NixOS installation into a fully configured system. Includes h
 
 ### Performance
 
-- **Zram** — 48GB compressed swap (zstd, 50% of RAM)
-- **VM tuning** — `swappiness=180`, optimized for zram workloads
+- **Zram** — 48GB compressed swap (zstd, 50% of RAM, priority 100)
+- **NVMe swap** — 912GB swap file for 1TB workloads (priority 10)
+- **VM tuning** — `swappiness=180`, `overcommit=1`, optimized for zram + swap
+- **Dirty page control** — Absolute byte limits (256MB bg, 1GB sync) prevent IO stalls
+- **1GB min_free_kbytes** — Prevents kernel allocation deadlocks under memory pressure
+- **earlyoom** — Early OOM killer with desktop notifications
 - **IO schedulers** — `none` for NVMe, `mq-deadline` for SATA
 - **Systemd initrd** — Faster boot with parallel service startup
-- **tmpfs /tmp** — RAM-backed temp directory (50% allocation)
+- **tmpfs /tmp** — RAM-backed temp directory (capped at 32GB)
 - **AMD P-State** — Active mode for dynamic CPU scaling
+- **Transparent Huge Pages** — `madvise` mode for opt-in hugepage allocation
+- **Process limits** — 1M nofile/nproc, unlimited memlock for 1TB workloads
 
 ### Desktop
 

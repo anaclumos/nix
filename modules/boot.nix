@@ -33,13 +33,18 @@
       "boot.shell_on_fail"
       "amd_pstate=active"
       "amdgpu.ppfeaturemask=0xffffffff"
+      # Use THP only when applications explicitly request it (madvise).
+      # 'always' can cause latency spikes during compaction under memory pressure.
+      "transparent_hugepage=madvise"
     ];
 
     consoleLogLevel = 0;
 
     tmp = {
       useTmpfs = true;
-      tmpfsSize = "50%";
+      # Cap tmpfs to 32GB. Default 50% would be ~48GB of physical RAM,
+      # but under heavy swap pressure that memory is better used for the workload.
+      tmpfsSize = "32G";
     };
   };
 
