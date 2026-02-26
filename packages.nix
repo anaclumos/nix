@@ -30,13 +30,6 @@ let
     tree
     k9s
     kubectl
-    (azure-cli.withExtensions [
-      azure-cli.extensions.bastion
-      (azure-cli.extensions.ssh.overridePythonAttrs (old: {
-        pythonRelaxDeps = [ "oras" ];
-      }))
-    ])
-    azure-storage-azcopy
     codex
     opencode
     nixfmt
