@@ -101,6 +101,7 @@ in
         airdrop = "cd ~/Screenshots && sudo tailscale file cp *.png iphone-17-pro: && rm *.png";
         oc = "opencode";
         qqqq = "cd ~/Desktop/extracranial && bun run save && exit";
+        c = "claude --dangerously-skip-permissions --teammate-mode auto";
       };
     };
   };
