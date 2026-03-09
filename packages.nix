@@ -79,7 +79,6 @@ let
     teams-for-linux
     beeper
     zoom-us
-    telegram-desktop
     customPackages.kakaotalk
     (google-chrome.override {
       commandLineArgs = [
